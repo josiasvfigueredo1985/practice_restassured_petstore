@@ -30,11 +30,9 @@ public class GetPetTests extends TestBase {
 
         // Fluxo
         criarPets.inserirPetStatusDisponível();
-        int responseCode = criarPets.code;
+        int responseCodedisponivel = criarPets.code;
         idDisp = criarPets.id;
 
-        //Asserções
-        Assert.assertEquals(responseCode, statusCodeEsperado);
 ////////
 
         //Parâmetros
@@ -52,6 +50,7 @@ public class GetPetTests extends TestBase {
         Response response = getPetRequest.executeRequest();
 
         //Asserções
+        Assert.assertEquals(responseCodedisponivel, statusCodeEsperado);
         Assert.assertEquals(response.statusCode(), statusCodeEsperado);
         softAssert.assertEquals(response.body().jsonPath().get("id").toString(), petId, "Validação id");
         softAssert.assertEquals(response.body().jsonPath().get("category.id").toString(), categoryId, "Validação categoryId");
@@ -75,11 +74,10 @@ public class GetPetTests extends TestBase {
 
         // Fluxo
         criarPets.inserirPetStatusPendente();
-        int responseCode = criarPets.code;
+        int responseCodePendente = criarPets.code;
         idPend = criarPets.id;
 
-        //Asserções
-        Assert.assertEquals(responseCode, statusCodeEsperado);
+
 ////////
 
         //Parâmetros
@@ -97,6 +95,7 @@ public class GetPetTests extends TestBase {
         Response response = getPetRequest.executeRequest();
 
         //Asserções
+        Assert.assertEquals(responseCodePendente, statusCodeEsperado);
         Assert.assertEquals(response.statusCode(), statusCodeEsperado);
         softAssert.assertEquals(response.body().jsonPath().get("id").toString(), petId, "Validação id");
         softAssert.assertEquals(response.body().jsonPath().get("category.id").toString(), categoryId, "Validação categoryId");
@@ -120,11 +119,9 @@ public class GetPetTests extends TestBase {
 
         // Fluxo
         criarPets.inserirPetStatusVendido();
-        int responseCode = criarPets.code;
+        int responseCodeVendido = criarPets.code;
         idVend = criarPets.id;
 
-        //Asserções
-        Assert.assertEquals(responseCode, statusCodeEsperado);
 ////////
 
         //Parâmetros
@@ -142,6 +139,7 @@ public class GetPetTests extends TestBase {
         Response response = getPetRequest.executeRequest();
 
         //Asserções
+        Assert.assertEquals(responseCodeVendido, statusCodeEsperado);
         Assert.assertEquals(response.statusCode(), statusCodeEsperado);
         softAssert.assertEquals(response.body().jsonPath().get("id").toString(), petId, "Validação id");
         softAssert.assertEquals(response.body().jsonPath().get("category.id").toString(), categoryId, "Validação categoryId");

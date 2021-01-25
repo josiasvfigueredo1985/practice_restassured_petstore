@@ -24,11 +24,9 @@ public class DeletePetTests extends TestBase {
 
         // Fluxo
         criarPets.inserirPetStatusDisponível();
-        int responseCode = criarPets.code;
+        int responseCodeInserido = criarPets.code;
         idDisp = criarPets.id;
 
-        //Asserções
-        Assert.assertEquals(responseCode, statusCodeEsperado);
 ////////
 
         //Parâmetros
@@ -39,6 +37,7 @@ public class DeletePetTests extends TestBase {
         Response response = deletePetRequest.executeRequest();
 
         //Asserções
+        Assert.assertEquals(responseCodeInserido, statusCodeEsperado);
         Assert.assertEquals(response.statusCode(), statusCodeEsperado);
         softAssert.assertEquals(response.body().jsonPath().get("code"), 200, "Validação code");
         softAssert.assertEquals(response.body().jsonPath().get("type").toString(), "unknown", "Validação type");
